@@ -85,20 +85,20 @@
            <arg value="mods.for" />
            <arg value="subs1.for" />
            <arg value="subs2.for" />
-           <arg value="fortlib3/afvc.for" />
-           <arg value="fortlib3/cmrhs2.for" />
-           <arg value="fortlib3/ezyplot.for" />
-           <arg value="fortlib3/getofil_ux.for" />
-           <arg value="fortlib3/hogk.for" />
-           <arg value="fortlib3/newhog.for" />
-           <arg value="fortlib3/newsubs.F" />
-           <arg value="fortlib3/obseqw.for" />
-           <arg value="fortlib3/rgps2.for" />
-           <arg value="fortlib3/rnneu.for" />
-           <arg value="fortlib3/sysdep_g77.for" />
-           <arg value="fortlib3/tolgh2.for" />
-           <arg value="fortlib3/upcov.for" />
-           <arg value="fortlib3/vfcgps.for" />
+           <arg value="afvc.for" />
+           <arg value="cmrhs2.for" />
+           <arg value="ezyplot.for" />
+           <arg value="getofil_ux.for" />
+           <arg value="hogk.for" />
+           <arg value="newhog.for" />
+           <arg value="newsubs.F" />
+           <arg value="obseqw.for" />
+           <arg value="rgps2.for" />
+           <arg value="rnneu.for" />
+           <arg value="sysdep_g77.for" />
+           <arg value="tolgh2.for" />
+           <arg value="upcov.for" />
+           <arg value="vfcgps.for" />
            <arg value="-o" />
            <arg  value="adjust" />
          </exec>
@@ -119,6 +119,9 @@
             <arg value="-s" />
             <arg value="${WRAPPER}" />
             <arg value="${destbindir}/${exe_name}" />
+         </exec>
+         <exec executable="rm" >
+            <arg value="adjust.zip" />
          </exec>
          <antcall target="zip"/>
          <exec executable="banner" >
@@ -150,9 +153,6 @@
     </target>
 
     <target name="zip" if="isUnix">
-         <exec executable="rm"  >
-           <arg value="adjust.zip" />
-         </exec>
          <exec executable="zip"  >
            <arg value="-Dl" />
            <arg value="-j" />
@@ -174,10 +174,6 @@
            <arg value="fortlib3/rgps2.for" />
            <arg value="fortlib3/rnneu.for" />
            <arg value="fortlib3/sysdep_g77.for" />
-           <!--arg value="fortlib3/sysdep_pc.for" />
-           <arg value="fortlib3/sysdep_ux.for" />
-           <arg value="fortlib3/sysdep_w.for" />
-           <arg value="fortlib3/tmisc.for" /-->
            <arg value="fortlib3/tolgh2.for" />
            <arg value="fortlib3/upcov.for" />
            <arg value="fortlib3/vfcgps.for" />

@@ -6211,9 +6211,9 @@ C-------------------------------------------------------------------------------
 
       IMPLICIT DOUBLE PRECISION (A-H, O-Z)
       IMPLICIT INTEGER (I-N)
-      COMMON /XLATE/  RX(30), RY(30), RZ(30), SCALE(30),
-     +             DELX(30), DELY(30), DELZ(30), COSRX(30), SINRX(30),
-     +             COSRY(30), SINRY(30), COSRZ(30), SINRZ(30)
+      COMMON /XLATE/  RX(36), RY(36), RZ(36), SCALE(36),
+     +             DELX(36), DELY(36), DELZ(36), COSRX(36), SINRX(36),
+     +             COSRY(36), SINRY(36), COSRZ(36), SINRZ(36)
 
 *** DO THE TRANSLATION
 
@@ -6259,9 +6259,9 @@ C-------------------------------------------------------------------------------
 
       IMPLICIT DOUBLE PRECISION (A-H, O-Z)
       IMPLICIT INTEGER (I-N)
-      COMMON /XLATE/  RX(30), RY(30), RZ(30), SCALE(30),
-     +             DELX(30), DELY(30), DELZ(30), COSRX(30), SINRX(30),
-     +             COSRY(30), SINRY(30), COSRZ(30), SINRZ(30)
+      COMMON /XLATE/  RX(36), RY(36), RZ(36), SCALE(36),
+     +             DELX(36), DELY(36), DELZ(36), COSRX(36), SINRX(36),
+     +             COSRY(36), SINRY(36), COSRZ(36), SINRZ(36)
 
 *** DO THE TRANSLATION
 

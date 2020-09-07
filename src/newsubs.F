@@ -764,7 +764,7 @@ C-------------------------------------------------------------------------------
       INTEGER n,M,NSTACK
       REAL*8     arr(n)
       character  brr(n)*80
-      PARAMETER  (M=7,NSTACK=5000)
+      PARAMETER  (M=7,NSTACK=50000)
       INTEGER    i,ir,j,jstack,k,l,istack(NSTACK)
       REAL*8     a,temp1
       character  b*80,temp2*80    
@@ -1421,7 +1421,7 @@ c     GO TO 103
         do ii=1,ncount
           write (LUNIT,'(a80)') cards(ii)
         enddo
-        WRITE(LUNIT,'(a80)') BCARD
+c       WRITE(LUNIT,'(a80)') BCARD
         ncount = 0
       endif
       GO TO 103
@@ -1439,17 +1439,17 @@ c     GO TO 103
 
 C  Delete scratch files
 
-#ifdef NGS_UNIX_ENV
-      call system ('rm NLUN2')
-      call system ('rm NLUN3')
-      call system ('rm NLUN4')
-      call system ('rm NLUN5')
-#else
+c#ifdef NGS_UNIX_ENV
+c      call system ('rm NLUN2')
+c      call system ('rm NLUN3')
+c      call system ('rm NLUN4')
+c      call system ('rm NLUN5')
+c#else
       call system ('del NLUN2')
       call system ('del NLUN3')
       call system ('del NLUN4')
       call system ('del NLUN5')
-#endif
+c#endif
 
       return
       END
