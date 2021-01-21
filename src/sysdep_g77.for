@@ -85,7 +85,7 @@ C Parse to components
       READ (TIMEC(5:6),'(I2)') ISEC
       READ (TIMEC(8:9),'(F2.0)') DECSEC
 
-      SEC = DBLE(ISEC) + DECSEC/100.0
+      SEC = DBLE(ISEC) + DECSEC/100.D0
 
 C
 C.........  2.0  STORE TIME AS STRING

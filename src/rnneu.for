@@ -33,7 +33,7 @@ C %P%
       DIMENSION WORK1(3,3),WORK2(3,3),RM(3,3)
 *********
 
-C      SCCSID='$Id: rnneu.for 44197 2010-07-13 12:26:03Z bruce.tran $	20$Date: 2008/08/25 16:03:29 $ NGS'
+C      SCCSID='$Id: rnneu.for 115801 2020-05-14 06:21:11Z michael.dennis $	20$Date: 2008/08/25 16:03:29 $ NGS'
 
 *** LENGTH OF COEFF. ARRAYS
 
@@ -135,8 +135,8 @@ C      SCCSID='$Id: rnneu.for 44197 2010-07-13 12:26:03Z bruce.tran $	20$Date: 2
         CALL GETGLO (GLO2, JSN, B)
 
 *** COMPUTE MEAN ORIENTATION
-        GLA = (GLA1 + GLA2)/2.D0	
-        GLO = (GLO1 + GLO2)/2.D0	
+        GLA = (GLA1 + GLA2)/2.D0
+        GLO = (GLO1 + GLO2)/2.D0
 
         SB = DSIN(GLA)
         CB = DCOS(GLA)
@@ -168,8 +168,8 @@ C
           IB=II+I
           DO 120 J=1,3
             JB=3*(IVEC-1)+J
-            WORK1(I,J)=0.0
-            WORK2(I,J)=0.0
+            WORK1(I,J)=0.D0
+            WORK2(I,J)=0.D0
             DO 120 L=1,3
               IF (II+L .LE. JB) THEN
                 K = INX(II+L,NR) - (II+L)+ JB
@@ -178,12 +178,12 @@ C
               ENDIF
               TERM1= RM(I,L)*A(NB1+K)
               WORK1(I,J)=WORK1(I,J)+ TERM1
-  120	WORK2(I,J)=WORK2(I,J)+RM(I,L)*A(NB2+K)
+  120   WORK2(I,J)=WORK2(I,J)+RM(I,L)*A(NB2+K)
         DO 121 I=1,3
           DO 121 J=I,3
             K=INX(II+I,NR)-(II+I) + 3*(IVEC-1) +J
-            A(NB1+K)=0.0
-            A(NB2+K)=0.0
+            A(NB1+K)=0.D0
+            A(NB2+K)=0.D0
             DO 121 L=1,3
               A(NB1+K)=A(NB1+K)+WORK1(I,L)*RM(J,L)
   121   A(NB2+K)=A(NB2+K)+WORK2(I,L)*RM(J,L)
@@ -191,7 +191,7 @@ C
 C   (JVEC>IVEC)  ALL ELEMENTS ARE STORED IN A
         IF (IVEC.LT.NVEC) THEN
 C   COMPUTE R*Q FOR THE OTHER SUBMATRICES IN ROW IVEC
-          DO 140 JVEC=IVEC+1,NVEC	
+          DO 140 JVEC=IVEC+1,NVEC
             DO 130 I=1,3
               DO 130 J=1,3
                 K=INX(II+I,NR)-(II+I) + 3*(JVEC-1) +J
@@ -200,8 +200,8 @@ C   COMPUTE R*Q FOR THE OTHER SUBMATRICES IN ROW IVEC
             DO 135 I=1,3
               DO 135 J=1,3
                 K=INX(II+I,NR)-(II+I) + 3*(JVEC-1) +J
-                A(NB1+K)=0.0
-                A(NB2+K)=0.0
+                A(NB1+K)=0.D0
+                A(NB2+K)=0.D0
                 DO 135 L=1,3
                   A(NB1+K)=A(NB1+K)+RM(I,L)*WORK1(L,J)
   135       A(NB2+K)=A(NB2+K)+RM(I,L)*WORK2(L,J)
@@ -225,8 +225,8 @@ C
                 IROW=3*(JVEC-1)+I
                 JCOL=3*(IVEC-1)+J
                 K=INX(IROW,NR)-IROW+JCOL
-                A(NB1+K)=0.0
-                A(NB2+K)=0.0
+                A(NB1+K)=0.D0
+                A(NB2+K)=0.D0
                 DO 155 L=1,3
                   A(NB1+K)=A(NB1+K) + WORK1(I,L)*RM(J,L)
   155       A(NB2+K)=A(NB2+K) + WORK2(I,L)*RM(J,L)

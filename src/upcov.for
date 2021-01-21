@@ -11,7 +11,7 @@ C %P%
       LOGICAL FATAL,FATAL2,FIXVF,PROP,INVERT
       LOGICAL L2HLF, LEHT
       DIMENSION B(*),G(*),A(*)
-	DIMENSION COVECF(3,3)
+      DIMENSION COVECF(3,3)
       DIMENSION IC(LENC), C(LENC)
       COMMON /STRUCT/ NSTA, NAUX, NUNK, IDIM, NSTAS, NOBS, NCON, NZ,NGRT
       COMMON /DUAL/   N2HLF, I2HLF(MXSSN), L2HLF, LEHT
@@ -27,7 +27,7 @@ C %P%
       CHARACTER*99 SCCSID
 C
 C
-C      SCCSID='$Id: upcov.for 65375 2012-09-20 15:10:51Z jarir.saleh $	20$Date: 2008/08/25 16:04:06 $ NGS'
+C      SCCSID='$Id: upcov.for 115801 2020-05-14 06:21:11Z michael.dennis $	20$Date: 2008/08/25 16:04:06 $ NGS'
 
       WRITE (LUNIT, 6010) SIGH, SIGU
  6010 FORMAT(/' RESCALING UNCERTAINTIES OF GPS HORIZONTAL OBSERVATIONS',        
@@ -67,7 +67,7 @@ C
 *     NC = NR + 3 + LENG
       NC = NR + 5 + LENG
 
-	  CALL UPDATG (IUO, IUO2, NVEC, NR, NC, LENG, G, B, A)	 
+        CALL UPDATG (IUO, IUO2, NVEC, NR, NC, LENG, G, B, A)
       ENDIF
       GO TO 100
 
@@ -143,11 +143,11 @@ C
 
       DO 95 I=1,NR
 C   MARK REJECTED OBSERVATIONS
-      IF(G(I,N5).EQ.100.) THEN
+      IF(G(I,N5).EQ.100.D0) THEN
         DO 93 J=1,NR
-          G(J,I)=0.0
-   93     G(I,J)=0.0
-        G(I,I)=10000.
+          G(J,I)=0.D0
+   93     G(I,J)=0.D0
+        G(I,I)=10000.D0
       ELSE
 C  SAVE THE DIAGONAL TERM IN COLUMN N5
 C
@@ -164,20 +164,20 @@ c         G(I,N5) = G(I,I)
 c         G(I+1,N5) = G(I+1,I+1)
 c         G(I+2,N5) = G(I+2,I+2)
 c next is correlation XY         
-         IF (G(I,I) .EQ. 10000.) THEN
-         G(I,N5+1 ) = 0.
+         IF (G(I,I) .EQ. 10000.D0) THEN
+         G(I,N5+1 ) = 0.D0
          ELSE
          G(I,N5+1) = G(I,I+1)/(SQRT(G(I,I))*SQRT(G(I+1,I+1)))
          ENDIF
 c next is correlation YZ         
-         IF (G(I+1,I+1) .EQ. 10000.) THEN
-         G(I+1,N5+1) = 0.
+         IF (G(I+1,I+1) .EQ. 10000.D0) THEN
+         G(I+1,N5+1) = 0.D0
          ELSE
          G(I+1,N5+1) = G(I+1,I+2)/(SQRT(G(I+1,I+1))*SQRT(G(I+2,I+2)))
          ENDIF
 c next is correlation XZ          
-         IF (G(I+2,I+2) .EQ. 10000.) THEN
-         G(I+2,N5+1) = 0.
+         IF (G(I+2,I+2) .EQ. 10000.D0) THEN
+         G(I+2,N5+1) = 0.D0
          ELSE
          G(I+2,N5+1) = G(I,I+2)/(SQRT(G(I,I))*SQRT(G(I+2,I+2)))
          ENDIF

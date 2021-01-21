@@ -1,5 +1,5 @@
 C %P%
-* file $RCSfile: mods.for,v $  v_$Revision: 87172 $
+* file $RCSfile: mods.for,v $  v_$Revision: 115800 $
 
       SUBROUTINE ADJST (B, GOOGE, SHIFTS, G, NX, A, LAWORK, LNWORK,
      &                  IUO, IUO2)
@@ -55,7 +55,7 @@ C
 
       DATA ITYPE / 1 /
 
-C      SCCSID='$Id: mods.for 87172 2016-01-21 15:33:05Z jarir.saleh $	20$Date: 2007/11/30 13:11:56 $ NGS'
+C      SCCSID='$Id: mods.for 115800 2020-05-14 06:20:00Z michael.dennis $	20$Date: 2007/11/30 13:11:56 $ NGS'
 
 *
 *** GET STATION CONNECTION MATRIX FOR USE IN COMPUTING LOCAL ACCURACIES
@@ -342,12 +342,12 @@ C-------------------------------------------------------------------------------
         CALL AFII (ACARD)
       ELSEIF (CC12 .EQ. 'MM') THEN
         CALL AFMM (ACARD)
-	
+
 *************************************    
-** v 4.16	
+** v 4.16
 *     ELSEIF (CC12 .EQ. 'NL') THEN
 *       CONTINUE
-** v 4.26 
+** v 4.26
       ELSEIF (CC12 .EQ. 'NL') THEN
         CALL AFNL (ACARD)
 *************************************
@@ -360,9 +360,9 @@ C-------------------------------------------------------------------------------
         CALL AFSS (ACARD, A, FATAL)
       ELSEIF (CC12 .EQ. 'VV') THEN
         CALL AFVV (ACARD)
-** v 4.30vf	
+** v 4.30vf
 ***    added feb 10, 2003
-	ELSEIF(CC12 .EQ.'VS') THEN
+      ELSEIF(CC12 .EQ.'VS') THEN
           CALL AFVS (ACARD)
 ***     end insert 2/10/2003
       ELSEIF (CC12 .NE. 'CC'  .AND.  CC12 .NE. 'HC'  .AND.
@@ -527,8 +527,8 @@ C-------------------------------------------------------------------------------
 ** v 4.32vf
       ISETHU=0
       IVCGPS=.FALSE.
-      SIGH=1.0
-      SIGU=1.0
+      SIGH=1.D0
+      SIGU=1.D0
 *************
 ***10-24-03
       itmax2 = 5
@@ -608,7 +608,7 @@ C-------------------------------------------------------------------------------
 
       IF (LMSL) THEN
         WRITE (LUNIT,55)
-** v 4.29f	
+** v 4.29f
 *  55   FORMAT (' ADJUST ORTHOMETRIC ELEVATIONS')
    55   FORMAT (' ADJUST ORTHOMETRIC HEIGHTS')
 **********************
@@ -923,9 +923,9 @@ c         WRITE (LUNIT,198)
   302 FORMAT (' DO NOT DISPLAY THE ADJUSTED POSITIONS')
 ** v 4.32vf
 *** inserted 2/10/3003
-	IF(ISETHU.GT.0) THEN
+        IF(ISETHU.GT.0) THEN
         WRITE(LUNIT,310) 
-  310	FORMAT(' GPS SESSION COVARIANCE MATRICES INPUT IN THE G-FILE',
+  310   FORMAT(' GPS SESSION COVARIANCE MATRICES INPUT IN THE G-FILE',
      &' WILL BE SCALED AS FOLLOWS:'/
      &'  PROJECT    HORIZONTAL  UP')
       DO 312 I=1,ISETHU
@@ -939,7 +939,7 @@ c         WRITE (LUNIT,198)
       IF(IVCGPS) WRITE(LUNIT,315)
   315 FORMAT(' VARIANCE FACTORS FOR GPS HORIZONTAL AND VERTICAL ',
      &  'COMPONENTS WILL BE COMPUTED')
-***     end insert		
+***     end insert
 
       RETURN
       END
@@ -1268,7 +1268,7 @@ C        BCARD(79:80) = 'BA'                  !correct ellipsoidal height order 
 *** v 4.29k
 *       IF (.NOT. LMSL) CALL UP84 (BCARD, B)
         CONTINUE   
-***	
+***
       ELSEIF (BBID .EQ. '86') THEN
 C        BCARD(54:55) = '41'                  !Correct ellipsoidal height order and class
         CALL UP86 (BCARD, B)

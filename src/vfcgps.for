@@ -33,7 +33,7 @@ C %P%
 ***10-31-03
 *      common/vcrec2/vtvhor, vtvup, vtvcor, rnhor, rnup
 C
-C      SCCSID='$Id: vfcgps.for 65375 2012-09-20 15:10:51Z jarir.saleh $	20$Date: 2008/08/25 16:04:22 $ NGS'
+C      SCCSID='$Id: vfcgps.for 115801 2020-05-14 06:21:11Z michael.dennis $	20$Date: 2008/08/25 16:04:22 $ NGS'
       VFCGPS = .TRUE.
       VFSTOL = 1.D-3
       VFCTOL = 1.D-3
@@ -66,11 +66,11 @@ C      SCCSID='$Id: vfcgps.for 65375 2012-09-20 15:10:51Z jarir.saleh $	20$Date:
 
 *** INITIALIZE VARIANCE FACTORS
 
-      VTVHOR=0.0
-      VTVUP=0.0
-      VTVCOR=0.0
-      RNHOR=0.0
-      RNUP=0.0
+      VTVHOR=0.D0
+      VTVUP=0.D0
+      VTVCOR=0.D0
+      RNHOR=0.D0
+      RNUP=0.D0
 
 *** LOOP OVER THE OBSERVATIONS
 
@@ -195,8 +195,8 @@ C      SCCSID='$Id: vfcgps.for 65375 2012-09-20 15:10:51Z jarir.saleh $	20$Date:
 *** COMPUTE VARIANCE FACTORS AND TEST CONVERGENCE
 
 ****12-02-03************
-      CVTVH = VTVHOR + 2.0*VTVCOR/3.0
-      CVTVU = VTVUP + VTVCOR/3.0
+      CVTVH = VTVHOR + 2.D0*VTVCOR/3.D0
+      CVTVU = VTVUP + VTVCOR/3.D0
 **************************
       VFHOR=CVTVH/RNHOR
       VFUP=CVTVU/RNUP
@@ -387,7 +387,7 @@ C
 ***  STEP 6.  COMPUTE V-HAT-H AND V-HAT U
 C     multiply the columns of GPSVS by R(inverse)(transpose), where R is the 
 C     upper Cholesky factor of the covariance matrix of the 
-C	observatios for this session.
+C       observatios for this session.
 C
       CALL CMRHS3(G,NR,GPSVS,3*NVECS,1)
 C
@@ -398,11 +398,11 @@ C
 **   STEP 7. COMPUTE CONTRIBUTIONS OF THIS SESSION TO VTPV HORIZONTAL,
 ****    UP, AND MIXED TERMS. ACCUMULATE REDUNDANCY NUMBERS
 ***
-      SPVVHS=0.0
-      SPVVUS=0.0
-      SPVVHU=0.0
-      RNHS=0.0
-      RNUS=0.0
+      SPVVHS=0.D0
+      SPVVUS=0.D0
+      SPVVHU=0.D0
+      RNHS=0.D0
+      RNUS=0.D0
 C
 C  accumulate the weighted sum of squares of residuals for this session
       DO 110 I=1,NR
@@ -410,7 +410,7 @@ C  accumulate the weighted sum of squares of residuals for this session
         CALL BIGV (KINDS(I), ISNS(I), JSNS(I), LOBS(I), IVF, G(I,N4), 
      &             SD, FATAL)
 C  SKIP REJECTED OBSERVATIONS
-        IF(G(I,N5).GE.100.0) GO TO 110
+        IF(G(I,N5).GE.100.D0) GO TO 110
         SPVVHS=SPVVHS+GPSVS(I,1)**2
         SPVVUS=SPVVUS+GPSVS(I,2)**2
         SPVVHU=SPVVHU+GPSVS(I,1)*GPSVS(I,2)
@@ -424,7 +424,7 @@ C
 C  add the contribution of this session to the total
       VTVHOR=VTVHOR+SPVVHS
       VTVUP=VTVUP+SPVVUS
-      VTVCOR=VTVCOR+2.0*SPVVHU
+      VTVCOR=VTVCOR+2.D0*SPVVHU
       RNHOR=RNHOR+RNHS
       RNUP=RNUP+RNUS
 ****

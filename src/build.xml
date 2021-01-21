@@ -7,6 +7,26 @@
     <property name="build" location="build"/>
     <property name="obj" location="${build}/obj"/>
     <property name="executable" location="${destbindir}/${exe_name.w}"/>
+    <property name="pwd" location=""/>
+    <property name="Preplt2version" value="${Preplt2version_in}"/>
+    <property name="Adjustversion" value="${Adjustversion_in}"/>
+    <property name="Obschkversion" value="${Obschkversion_in}"/>
+    <property name="Chkobsversion" value="${Chkobsversion_in}"/>
+    <property name="Obsdesversion" value="${Obsdesversion_in}"/>
+    <property name="Adjustvvv" value="${Adjustvvv_in}"/>
+    <property name="Chkobsvvv" value="${Chkobsvvv_in}"/>
+    <property name="Obschkvvv" value="${Obschkvvv_in}"/>
+    <property name="date" value="${date_in}"/>
+    <property name="ALLdate" value="${ALLdate_in}"/>
+    <property name="Preplt2date" value="${Preplt2date_in}"/>
+    <property name="Adjustdate" value="${Adjustdate_in}"/>
+    <property name="Obschkdate" value="${Obschkdate_in}"/>
+    <property name="Chkobsdate" value="${Chkobsdate_in}"/>
+    <property name="Obsdesdate" value="${Obsdesdate_in}"/>
+    <property name="Modifieddate" value="${Modifieddate_in}"/>
+    <property name="dev_dir" value="/ngs/projects/web/testweb/devlinuxlocal/cgi/cgi-bin"/>
+    <property name="test_dir" value="/ngs/projects/web/testweb/testlinuxlocal/cgi/cgi-bin"/>
+    <property name="prod_dir" value="/ngs/projects/web/newweb/linuxlocal/cgi/cgi-bin"/>
     <taskdef resource="cpptasks.tasks"/>
 
     <!-- set the operating system test properties -->
@@ -108,6 +128,17 @@
    <target name="linkall" depends="linkallunix,linkallwindows">
     <echo message="Operating System: ${os.name}" />
    </target>
+   <target name="deployweb" depends="deploy,isdev,istest,isprod">
+         <antcall target="versioning"/>
+         <antcall target="changepermissionweb"/>
+         <echo message="ADJUST suite is deployed" />
+   </target>
+   <target name="deploybetaweb" depends="deploy,isbeta">
+         <antcall target="versioning"/>
+         <antcall target="changepermissionweb"/>
+         <echo message="ADJUST suite is deployed" />
+   </target>
+
 
     <target name="deploy" depends="linkall" if="isUnix">
       <!-- Move executable to deployment directory -->
@@ -120,6 +151,9 @@
             <arg value="${WRAPPER}" />
             <arg value="${destbindir}/${exe_name}" />
          </exec>
+
+         <antcall target="scpdeimos"/>
+
          <exec executable="rm" >
             <arg value="adjust.zip" />
          </exec>
@@ -186,6 +220,142 @@
            <arg value="adjust" />
            <arg value="adjust.exe" />
          </exec>
+         <exec executable="mv" >
+            <arg value="adjust.zip" />
+            <arg value="downloads/adjust.zip" />
+         </exec>
     </target>
+    <target name="versioning">
+      <echo message="Update version number and date for index.shtml"/>
+      <exec executable="/bin/sh"  >
+          <arg value="-c" />
+          <arg value="/usr/bin/perl -p -i -e 's/Datemmyyyy/${date}/g' web/index.shtml;
+                      /usr/bin/perl -p -i -e 's/ALLmmyyyy/${ALLdate}/g' web/index.shtml;
+		      /usr/bin/perl -p -i -e 's/Preplt2mmyyyy/${Preplt2date}/g' web/index.shtml;
+		      /usr/bin/perl -p -i -e 's/Adjustmmyyyy/${Adjustdate}/g' web/index.shtml;
+		      /usr/bin/perl -p -i -e 's/Obschkmmyyyy/${Obschkdate}/g' web/index.shtml;
+		      /usr/bin/perl -p -i -e 's/Chkobsmmyyyy/${Chkobsdate}/g' web/index.shtml;
+		      /usr/bin/perl -p -i -e 's/Obsdesmmyyyy/${Obsdesdate}/g' web/index.shtml;
+		      /usr/bin/perl -p -i -e 's/Modifiedmmyyyy/${Modifieddate}/g' web/index.shtml;
+		      /usr/bin/perl -p -i -e 's/Preplt2xxx/${Preplt2version}/g' web/index.shtml;
+		      /usr/bin/perl -p -i -e 's/Adjustxxx/${Adjustversion}/g' web/index.shtml;
+		      /usr/bin/perl -p -i -e 's/Obschkxxx/${Obschkversion}/g' web/index.shtml;
+		      /usr/bin/perl -p -i -e 's/Chkobsxxx/${Chkobsversion}/g' web/index.shtml;
+		      /usr/bin/perl -p -i -e 's/Obsdesxxx/${Obsdesversion}/g' web/index.shtml;
+		      /usr/bin/perl -p -i -e 's/Adjustvvv/${Adjustvvv}/g' web/index.shtml;
+		      /usr/bin/perl -p -i -e 's/Chkobsvvv/${Chkobsvvv}/g' web/index.shtml;
+		      /usr/bin/perl -p -i -e 's/Obschkvvv/${Obschkvvv}/g' web/index.shtml;"/>
+      </exec> 
+      <echo message="Copy index.shtml to ${PC_PATH}"/>
+      <exec executable="/bin/sh"  >
+      	  <arg value="-c"/>
+          <arg value="scp -r ${pwd}/web/index.shtml ${CGI_SERVER_LOCAL}:${PC_PATH}" />
+      </exec>      
+      <echo message="Copy adjust_supplemental.txt to ${PC_PATH}"/>
+      <exec executable="/bin/sh"  >
+          <arg value="-c"/>
+          <arg value="scp -r ${pwd}/downloads/adjust_supplemental.txt ${CGI_SERVER_LOCAL}:${PC_PATH}" />
+      </exec>
+      <echo message="Copy adjustment_guidelines.pdf to ${PC_PATH}"/>
+      <exec executable="/bin/sh"  >
+          <arg value="-c"/>
+          <arg value="scp -r ${pwd}/downloads/adjustment_guidelines.pdf ${CGI_SERVER_LOCAL}:${PC_PATH}" />
+      </exec>
+      <echo message="Copy adjust_all.zip to ${PC_PATH}"/>
+      <exec executable="/bin/sh"  >
+          <arg value="-c"/>
+          <arg value="scp -r ${pwd}/downloads/adjust_all.zip ${CGI_SERVER_LOCAL}:${PC_PATH}" />
+      </exec>
+      <echo message="Copy adjust.exe to ${PC_PATH}"/>
+      <exec executable="/bin/sh"  >
+          <arg value="-c"/>
+          <arg value="scp -r ${pwd}/adjust.exe ${CGI_SERVER_LOCAL}:${PC_PATH}" />
+      </exec>
+      <echo message="Copy adjust_v${Adjustvvv}.zip to ${PC_PATH}"/>
+      <exec executable="/bin/sh"  >
+          <arg value="-c"/>
+          <arg value="scp -r ${pwd}/downloads/adjust_v${Adjustvvv}.zip ${CGI_SERVER_LOCAL}:${PC_PATH}" />
+      </exec>
+      <!--echo message="Copy chkobs_v${Chkobsvvv}.zip to ${PC_PATH}"/>
+      <exec executable="/bin/sh"  >
+          <arg value="-c"/>
+          <arg value="scp -r ${pwd}/downloads/chkobs_v${Chkobsvvv}.zip ${CGI_SERVER_LOCAL}:${PC_PATH}" />
+      </exec>
+      <echo message="Copy obschk_v${Obschkvvv}.zip to ${PC_PATH}"/>
+      <exec executable="/bin/sh"  >
+          <arg value="-c"/>
+          <arg value="scp -r ${pwd}/downloads/obschk_v${Obschkvvv}.zip ${CGI_SERVER_LOCAL}:${PC_PATH}" />
+      </exec-->
+    </target>
+    <target name="isdev" if="DEV" >
+      <property name="PC_PATH" value="/ngs/projects/web/testweb/htdocs/PC_PROD/ADJUST" />
+      <property name="CGI_SERVER_LOCAL" value="ngs-vsu-deimos"/>
+      <echo message="dev website location is ${CGI_SERVER_LOCAL}:${PC_PATH}/"/>
+    </target>
+    <target name="istest" if="TEST" >
+      <property name="PC_PATH" value="/ngs/projects/web/testweb/testdocs/PC_PROD/ADJUST" />
+      <property name="CGI_SERVER_LOCAL" value="ngs-vsu-deimos"/>
+      <echo message="test website location is ${CGI_SERVER_LOCAL}:${PC_PATH}/"/>
+    </target>
+    <target name="isprod" if="PROD" >
+      <property name="PC_PATH" value="/ngs/projects/web/newweb/htdocs/PC_PROD/ADJUST" />
+      <property name="CGI_SERVER_LOCAL" value="deimos"/>
+      <echo message="prod website location is ${CGI_SERVER_LOCAL}:${PC_PATH}/"/>
+    </target>
+    <target name="isbeta" >
+      <property name="PC_PATH" value="/ngs/projects/web/testweb/betadocs/PC_PROD/ADJUST" />
+      <property name="CGI_SERVER_LOCAL" value="deimos"/>
+      <echo message="beta website location is ${CGI_SERVER_LOCAL}:${PC_PATH}/"/>
+    </target>
+    <target name="changepermissionweb">
+      <echo message="ssh ${CGI_SERVER_LOCAL} chmod 775 ${PC_PATH}/*.zip" />
+      <exec executable="/bin/sh"  >
+          <arg value="-c" />
+          <arg value="ssh ${CGI_SERVER_LOCAL} chmod 775 ${PC_PATH}/adjust_v${Adjustvvv}.zip" />
+      </exec>
+      <!--exec executable="/bin/sh"  >
+          <arg value="-c" />
+          <arg value="ssh ${CGI_SERVER_LOCAL} chmod 775 ${PC_PATH}/chkobs_v${Chkobsvvv}.zip" />
+      </exec>
+      <exec executable="/bin/sh"  >
+          <arg value="-c" />
+          <arg value="ssh ${CGI_SERVER_LOCAL} chmod 775 ${PC_PATH}/obschk_v${Obschkvvv}.zip" />
+      </exec-->
+    </target>
+
+    <target name="scpdeimos" if="PROD" >
+      <tstamp/>
+      <echo message=" backup program on ${CGI_SERVER}:${destbindir} " />
+      <exec executable="/bin/ksh"  >
+          <arg value="-c" />
+          <arg value="scp ${CGI_SERVER}:${executable} ${CGI_SERVER}:${destbindir}/backup/${exe_name.w}_${DSTAMP}${TSTAMP}" />
+      </exec>
+      <echo message=" copying ${exe_name.w} to ${CGI_SERVER}:${destbindir} " />
+      <exec executable="/bin/ksh"  >
+          <arg value="-c" />
+          <arg value="ssh ${CGI_SERVER} ln -s ${WRAPPER} ${destbindir}/${exe_name}" />
+      </exec>
+      <exec executable="/bin/ksh"  >
+          <arg value="-c" />
+          <arg value="scp ${executable} ${CGI_SERVER}:${destbindir}" />
+      </exec>
+      <echo message="ssh ${CGI_SERVER} chmod 775 ${destbindir}" />
+      <exec executable="/bin/ksh"  >
+          <arg value="-c" />
+          <arg value="ssh ${CGI_SERVER} chmod 775 ${executable}" />
+      </exec>
+      <echo message=" binary deployed to ${CGI_SERVER}:${destbindir}" />
+
+      <echo message=" chgrp on ${CGI_SERVER}:${destbindir}" />
+      <exec executable="/bin/ksh"  >
+          <arg value="-c" />
+          <arg value="ssh ${CGI_SERVER} chgrp -f ${RELTEAM_UNXGRP} ${executable}" />
+      </exec>
+      <exec executable="/bin/ksh"  >
+          <arg value="-c" />
+          <arg value="ssh ${CGI_SERVER} chgrp -f ${RELTEAM_UNXGRP} ${destbindir}/${script_name}" />
+      </exec>
+    </target>
+
 </project>
 

@@ -31,7 +31,7 @@ C %P%
 C
 ****************** end 2/7/2003 insert
 C
-C      SCCSID='$Id: obseqw.for 65375 2012-09-20 15:10:51Z jarir.saleh $	20$Date: 2008/08/25 16:02:55 $ NGS'
+C      SCCSID='$Id: obseqw.for 115801 2020-05-14 06:21:11Z michael.dennis $	20$Date: 2008/08/25 16:02:55 $ NGS'
 
 *** ABORT/PRINT LARGE RESIDUALS
 
@@ -54,7 +54,7 @@ C      SCCSID='$Id: obseqw.for 65375 2012-09-20 15:10:51Z jarir.saleh $	20$Date:
         G(I,N5+1) = G(I,I+1)
         G(I+1,N5+1) = G(I+1,I+2)
         G(I+2,N5+1) = G(I,I+2)
-  100 CONTINUE	 
+  100 CONTINUE
 
 ******
 *******************3-27*****************
@@ -86,7 +86,7 @@ C
       IF (ISETHU.GT.0) THEN
         DO 85 I=1,ISETHU
           IF(PROJID.EQ.VSPROJ(I)) THEN
- 	    CALL SCALEG (G, NR, NC, LENG,N1,N2,N3,N4,N5, NVEC, B,
+            CALL SCALEG (G, NR, NC, LENG,N1,N2,N3,N4,N5, NVEC, B,
      &                   KINDS, ISNS, JSNS, SIGHS(I),SIGUS(I))
             GO TO 86
           ENDIF
@@ -97,11 +97,11 @@ C
 C
       DO 95 I=1,NR
 C MARK REJECTED OBSERVATIONS
-      IF(G(I,N5).EQ.100.) THEN
+      IF(G(I,N5).EQ.100.D0) THEN
         DO 93 J=1,NR
-          G(J,I)=0.0
-   93     G(I,J)=0.0
-          G(I,I)=10000.
+          G(J,I)=0.D0
+   93     G(I,J)=0.D0
+          G(I,I)=10000.D0
 
 ** Oct. 15, 2003
         ELSE
@@ -120,20 +120,20 @@ c         G(I,N5) = G(I,I)
 c         G(I+1,N5) = G(I+1,I+1)
 c         G(I+2,N5) = G(I+2,I+2)
 c next is correlation XY         
-         IF (G(I,I) .EQ. 10000.) THEN
-           G(I,N5+1) = 0.
+         IF (G(I,I) .EQ. 10000.D0) THEN
+           G(I,N5+1) = 0.D0
          ELSE
            G(I,N5+1) = G(I,I+1)/(SQRT(G(I,I))*SQRT(G(I+1,I+1)))
          ENDIF
 c next is correlation YZ         
-         IF (G(I+1,I+1) .EQ. 10000.) THEN
-           G(I+1,N5+1) = 0.
+         IF (G(I+1,I+1) .EQ. 10000.D0) THEN
+           G(I+1,N5+1) = 0.D0
          ELSE
            G(I+1,N5+1) = G(I+1,I+2)/(SQRT(G(I+1,I+1))*SQRT(G(I+2,I+2)))
          ENDIF
 c next is correlation XZ          
-         IF (G(I+2,I+2) .EQ. 10000.) THEN
-           G(I+2,N5+1) = 0.
+         IF (G(I+2,I+2) .EQ. 10000.D0) THEN
+           G(I+2,N5+1) = 0.D0
          ELSE
            G(I+2,N5+1) = G(I,I+2)/(SQRT(G(I,I))*SQRT(G(I+2,I+2)))
          ENDIF
@@ -233,8 +233,8 @@ C
       CALL GETGLO (GLO2, JSN, B)
 
 *** COMPUTE MEAN ORIENTATION
-      GLA = (GLA1 + GLA2)/2.D0	
-      GLO = (GLO1 + GLO2)/2.D0	
+      GLA = (GLA1 + GLA2)/2.D0
+      GLO = (GLO1 + GLO2)/2.D0
 
       SB = DSIN(GLA)
       CB = DCOS(GLA)
@@ -260,7 +260,7 @@ C      COMPUTE R*C
         DO 23 JCOL=1,3
           JJ=3*(JVEC-1)+JCOL
           DO 21 I=1,3
-            W(I)=0.0
+            W(I)=0.D0
             DO 20 J=1,3
    20         W(I)=W(I)+RM(J,I)*G(II+J,JJ)
    21     CONTINUE
@@ -274,7 +274,7 @@ C     COMPUTE R*C*R(TRANSPOSE)
         DO 33 IROW=1,3
           JJ=3*(JVEC-1)+IROW
           DO 31 I=1,3
-            W(I)=0.0
+            W(I)=0.D0
             DO 30 J=1,3
    30         W(I)=W(I)+G(JJ,II+J)*RM(J,I)
    31     CONTINUE
@@ -292,7 +292,7 @@ C
         DO 55 J=1,NR
           JC=MOD(J-1,3)+1
           IF (IR .EQ. 1 .OR. IR .EQ.2) THEN 
-	    G(I,J)=G(I,J)*SFHOR
+            G(I,J)=G(I,J)*SFHOR
           ELSE
             G(I,J)=G(I,J)*SFUP
           ENDIF
@@ -315,8 +315,8 @@ C
         CALL GETGLO (GLO2, JSN, B)
 
 *** COMPUTE MEAN ORIENTATION
-        GLA = (GLA1 + GLA2)/2.D0	
-        GLO = (GLO1 + GLO2)/2.D0	
+        GLA = (GLA1 + GLA2)/2.D0
+        GLO = (GLO1 + GLO2)/2.D0
 
         SB = DSIN(GLA)
         CB = DCOS(GLA)
@@ -342,7 +342,7 @@ C  COMPUTE R*C
           DO 63 JCOL=1,3
           JJ=3*(JVEC-1)+JCOL
             DO 61 I=1,3
-              W(I)=0.0
+              W(I)=0.D0
               DO 60 J=1,3
    60           W(I)=W(I)+RM(I,J)*G(II+J,JJ)
    61       CONTINUE
@@ -356,7 +356,7 @@ C  COMPUTE R*C*R(TRANSPOSE)
           DO 73 IROW=1,3
             JJ=3*(JVEC-1)+IROW
             DO 71 I=1,3
-              W(I)=0.0
+              W(I)=0.D0
               DO 70 J=1,3
    70           W(I)=W(I)+G(JJ,II+J)*RM(I,J)
    71       CONTINUE
