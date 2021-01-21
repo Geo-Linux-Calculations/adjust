@@ -70,7 +70,7 @@
               <include name="fortlib3/getofil_ux.for" />
               <include name="fortlib3/hogk.for" />
               <include name="fortlib3/newhog.for" />
-              <include name="fortlib3/newsubs.F" />
+              <include name="fortlib3/newsubs.for" />
               <include name="fortlib3/obseqw.for" />
               <include name="fortlib3/rgps2.for" />
               <include name="fortlib3/rnneu.for" />
@@ -111,7 +111,7 @@
            <arg value="getofil_ux.for" />
            <arg value="hogk.for" />
            <arg value="newhog.for" />
-           <arg value="newsubs.F" />
+           <arg value="newsubs.for" />
            <arg value="obseqw.for" />
            <arg value="rgps2.for" />
            <arg value="rnneu.for" />
@@ -195,15 +195,16 @@
            <arg value="mods.for" />
            <arg value="subs1.for" />
            <arg value="subs2.for" />
-           <arg value="makefile_g77.w32" />
-           <arg value="makefile_wat.w32" />
+           <arg value="Makefile.g77.w32" />
+           <arg value="Makefile.linux" />
+           <arg value="Makefile.wat.w32" />
            <arg value="fortlib3/afvc.for" />
            <arg value="fortlib3/cmrhs2.for" />
            <arg value="fortlib3/ezyplot.for" />
            <arg value="fortlib3/getofil_ux.for" />
            <arg value="fortlib3/hogk.for" />
            <arg value="fortlib3/newhog.for" />
-           <arg value="fortlib3/newsubs.F" />
+           <arg value="fortlib3/newsubs.for" />
            <arg value="fortlib3/obseqw.for" />
            <arg value="fortlib3/rgps2.for" />
            <arg value="fortlib3/rnneu.for" />
@@ -231,24 +232,24 @@
           <arg value="-c" />
           <arg value="/usr/bin/perl -p -i -e 's/Datemmyyyy/${date}/g' web/index.shtml;
                       /usr/bin/perl -p -i -e 's/ALLmmyyyy/${ALLdate}/g' web/index.shtml;
-		      /usr/bin/perl -p -i -e 's/Preplt2mmyyyy/${Preplt2date}/g' web/index.shtml;
-		      /usr/bin/perl -p -i -e 's/Adjustmmyyyy/${Adjustdate}/g' web/index.shtml;
-		      /usr/bin/perl -p -i -e 's/Obschkmmyyyy/${Obschkdate}/g' web/index.shtml;
-		      /usr/bin/perl -p -i -e 's/Chkobsmmyyyy/${Chkobsdate}/g' web/index.shtml;
-		      /usr/bin/perl -p -i -e 's/Obsdesmmyyyy/${Obsdesdate}/g' web/index.shtml;
-		      /usr/bin/perl -p -i -e 's/Modifiedmmyyyy/${Modifieddate}/g' web/index.shtml;
-		      /usr/bin/perl -p -i -e 's/Preplt2xxx/${Preplt2version}/g' web/index.shtml;
-		      /usr/bin/perl -p -i -e 's/Adjustxxx/${Adjustversion}/g' web/index.shtml;
-		      /usr/bin/perl -p -i -e 's/Obschkxxx/${Obschkversion}/g' web/index.shtml;
-		      /usr/bin/perl -p -i -e 's/Chkobsxxx/${Chkobsversion}/g' web/index.shtml;
-		      /usr/bin/perl -p -i -e 's/Obsdesxxx/${Obsdesversion}/g' web/index.shtml;
-		      /usr/bin/perl -p -i -e 's/Adjustvvv/${Adjustvvv}/g' web/index.shtml;
-		      /usr/bin/perl -p -i -e 's/Chkobsvvv/${Chkobsvvv}/g' web/index.shtml;
-		      /usr/bin/perl -p -i -e 's/Obschkvvv/${Obschkvvv}/g' web/index.shtml;"/>
+              /usr/bin/perl -p -i -e 's/Preplt2mmyyyy/${Preplt2date}/g' web/index.shtml;
+              /usr/bin/perl -p -i -e 's/Adjustmmyyyy/${Adjustdate}/g' web/index.shtml;
+              /usr/bin/perl -p -i -e 's/Obschkmmyyyy/${Obschkdate}/g' web/index.shtml;
+              /usr/bin/perl -p -i -e 's/Chkobsmmyyyy/${Chkobsdate}/g' web/index.shtml;
+              /usr/bin/perl -p -i -e 's/Obsdesmmyyyy/${Obsdesdate}/g' web/index.shtml;
+              /usr/bin/perl -p -i -e 's/Modifiedmmyyyy/${Modifieddate}/g' web/index.shtml;
+              /usr/bin/perl -p -i -e 's/Preplt2xxx/${Preplt2version}/g' web/index.shtml;
+              /usr/bin/perl -p -i -e 's/Adjustxxx/${Adjustversion}/g' web/index.shtml;
+              /usr/bin/perl -p -i -e 's/Obschkxxx/${Obschkversion}/g' web/index.shtml;
+              /usr/bin/perl -p -i -e 's/Chkobsxxx/${Chkobsversion}/g' web/index.shtml;
+              /usr/bin/perl -p -i -e 's/Obsdesxxx/${Obsdesversion}/g' web/index.shtml;
+              /usr/bin/perl -p -i -e 's/Adjustvvv/${Adjustvvv}/g' web/index.shtml;
+              /usr/bin/perl -p -i -e 's/Chkobsvvv/${Chkobsvvv}/g' web/index.shtml;
+              /usr/bin/perl -p -i -e 's/Obschkvvv/${Obschkvvv}/g' web/index.shtml;"/>
       </exec> 
       <echo message="Copy index.shtml to ${PC_PATH}"/>
       <exec executable="/bin/sh"  >
-      	  <arg value="-c"/>
+            <arg value="-c"/>
           <arg value="scp -r ${pwd}/web/index.shtml ${CGI_SERVER_LOCAL}:${PC_PATH}" />
       </exec>      
       <echo message="Copy adjust_supplemental.txt to ${PC_PATH}"/>
