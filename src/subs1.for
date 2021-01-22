@@ -6836,7 +6836,7 @@ C-------------------------------------------------------------------------------
 
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       IMPLICIT INTEGER (I-N)
-      PARAMETER ( LENC = 10 )
+      PARAMETER ( LENC = 6 )
       DIMENSION B(*),C(LENC)
       COMMON /STRUCT/ NSTA, NAUX, NUNK, IDIM, NSTAS, NOBS, NCON, NZ,NGRT
 
