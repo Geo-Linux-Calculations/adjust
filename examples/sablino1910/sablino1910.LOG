@@ -1,0 +1,423 @@
+
+1                                                    NATIONAL GEODETIC SURVEY
+ PROGRAM ADJUST                                         ADJUSTMENT PROGRAM                                               PAGE   1
+                                                          VERSION   6.4.3
+
+
+ BLUE BOOK FILE = sablino1910.BBOOK                                                               
+ ADJUSTMENT FILE = sablino1910.AFILE                                                               
+ GPS FILE = NOGFILE                                                                         
+ OUTPUT FILE = sablino1910.LOG                                                                 
+ OUTPUT BLUE BOOK FILE = sablino1910.POS                                                                 
+
+0SYSTEM TIME IS 21/JAN/24 11:31:21.55   
+0******************************** A-FILE CONTENTS ********************************
+
+     **                                                                              
+     **      HEIGHT SHOWN IS ELLIPSOID HEIGHT                                        
+     **      HORIZONTALLY FREE ADJUSTMENT                                            
+     **      COORDINATE STANDARD DEVIATIONS ARE IN CENTIMETERS                       
+     **                                                                              
+     AA6377397155.006674372231802                                                    
+     BB     11                                                                       
+     CA00040005   13654499500001                                                     
+     CC        0001  0.08  0.07  0.20            59461534900N030192477850E0000000E   
+     **CD0005000400012676382000001                                                   
+     DD2                                                                             
+     II999999999                                                                     
+     MM1NNN      YYADJPOZ                                                            
+     PP00                                                                            
+     VV30                                                                            
+0********************************* END OF A-FILE *********************************
+
+1                                                    NATIONAL GEODETIC SURVEY
+ PROGRAM ADJUST                                         ADJUSTMENT PROGRAM                                               PAGE   2
+                                                          VERSION   6.4.3
+
+
+ ***************** ADJUSTMENT FILE OPTIONS **********
+
+ ELLIPSOID SEMI-MAJOR AXIS =  6377397.155 METERS
+ ECCENTRICITY SQUARED = 0.006674372231802000
+ DEFAULT ORTHOMETRIC HEIGHT =    0.000 METERS
+ DEFAULT GEOID HEIGHT =    0.000 METERS
+ ADJUST ORTHOMETRIC HEIGHTS
+ DO NOT SCALE SIGMAS BY A-POSTERIORI SIGMA
+ ABORT IF SINGULARITIES
+ DO NOT UPDATE *80* RECORDS
+ DO NOT UPDATE OUTPUT B-BOOK WITH CONSTRAINED VALUES FROM A-FILE
+ CREATE ADJUSTED POSITIONS FILE WITH FILENAME--ADJPOZ 
+ DO NOT UPDATE BLUE BOOK AND ADJUSTMENT FILE AT THE END OF EACH ITERATION
+ COMPUTE A 2-DIMENSIONAL ADJUSTMENT
+ COMPUTE NO MORE THAN   99 ITERATIONS
+ DO NOT DISPLAY STATISTICS IF SOLUTION SLOWLY CONVERGES
+ ABORT IF MISCLOSURE EXCEEDS 0.1E+21 SIGMA
+ PRINT WHEN MISCLOSURES EXCEED 0.1E+21 SIGMA
+ CONVERGE IF RMS SUM OF SHIFTS BELOW   0.003 METERS
+ COMPUTE NORMALIZED RESIDUALS AND INVERSE
+ ECHO BLUE BOOK FILE
+ BYPASS ALL ZENITH DISTANCES
+ DO NOT ECHO GPS DATA TRANSFER FILE
+ BYPASS ALL GPS DATA
+ DISPLAY CONSTRAINTS
+ DISPLAY ALL GPS RESIDUALS GREATER OR EQUAL TO  0.0 MM
+ DISPLAY ALL NON-GPS RESIDUALS/SD GREATER OR EQUAL TO  0.0 SIGMA
+ DISPLAY DIRECTION RESIDUALS
+ DISPLAY ANGLE RESIDUALS
+ DO NOT DISPLAY ZENITH DISTANCE RESIDUALS
+ DISPLAY DISTANCE RESIDUALS
+ DISPLAY ASTRO-AZIMUTH RESIDUALS
+ DO NOT DISPLAY GPS RESIDUALS
+ DISPLAY CONSTRAINED RESIDUALS
+ DISPLAY RESIDUALS GROUPED AROUND INTERSECTION STAS
+ DISPLAY POSITION SHIFTS
+ DISPLAY POSITION GOOGE NUMBERS
+
+ MINUTES SINCE START OF PROGRAM IS    0.0
+
+1                                                    NATIONAL GEODETIC SURVEY
+ PROGRAM ADJUST                                         ADJUSTMENT PROGRAM                                               PAGE   3
+                                                          VERSION   6.4.3
+
+
+ ******** CONSTRAINTS *************
+0 OBS #
+
+      7   CA00040005   13654499500001                                                     
+      9   CC        0001  0.08  0.07  0.20            59461534900N030192477850E0000000E   
+0************ END OF CONSTRAINTS *************
+
+1                                                    NATIONAL GEODETIC SURVEY
+ PROGRAM ADJUST                                         ADJUSTMENT PROGRAM                                               PAGE   4
+                                                          VERSION   6.4.3
+
+
+ ************ BLUE BOOK ************
+0 OBS #
+
+          000010*AA*HZTLOBS GEOANAGEODETIC ANALYSIS                               20090525
+          000020*10*SABLINO BASE NETWORK                                                  
+          000030*12*201905202006MD SERGEI FEHL                                       1AZ10
+     10   000100*30*0003010000010100000ABC99900002004242313Z00050000V01990111649100060000V
+          000110*31*FROM| |     | |    |  |  |FDH|DAT  |TIM|LEFT|LDH|| | | ANGLE |RIG|RDH|
+     11   000100*30*0003010000010100000ABC99900002004242313Z00060000V01990411533100040000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     12   000100*30*0003010000010100000ABC99900002004242313Z00040000V01990100242700020000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     13   000100*30*0003010000010100000ABC99900002004242313Z00020000V01990092832600010000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     14   000100*30*0005010000010100000ABC99900002004242313Z00060000V01990810059100040000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     15   000100*30*0005010000010100000ABC99900002004242313Z00040000V01990771938700030000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     16   000100*30*0006010000010100000ABC99900002004242313Z00020000V01990454257100040000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     17   000100*30*0006010000010100000ABC99900002004242313Z00040000V01990372834700030000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     18   000100*30*0006010000010100000ABC99900002004242313Z00030000V01990102232200050000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     19   000100*30*0004010000010100000ABC99900002004242313Z00030000V01990500756800050000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     20   000100*30*0004010000010100000ABC99900002004242313Z00050000V01990510756200060000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     21   000100*30*0004010000010100000ABC99900002004242313Z00060000V01990963958400020000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     22   000100*30*0004010000010100000ABC99900002004242313Z00020000V01990163935800010000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     23   000100*30*0004010000010100000ABC99900002004242313Z00010000V01991452432600030000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     24   000100*30*0002010000010100000ABC99900002004242313Z00010000V01990755512400030000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     25   000100*30*0002010000010100000ABC99900002004242313Z00030000V01990075311200040000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     26   000100*30*0002010000010100000ABC99900002004242313Z00040000V01990373704700060000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     27   000100*30*0001010000010100000ABC99900002004242313Z00030000V01990150413400040000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     28   000100*30*0001010000010100000ABC99900002004242313Z00040000V01990793200400020000V
+          000110*31*    | |     | |    |  |  |   |     |   ||   |   || | |       |   |   |
+     29   002000*52*000500000ABC1110000004622001010000Z0004000000200V0101126763820T0010001
+          003100*80*0001PULKOVO                       59461535000N030192478000E       UR11
+          003110*86*0001    00000K  N88          000     00000A41A                        
+          003120*80*0002KABOSI                        59432070000N030171452000E       UR11
+          003130*86*0002   000000K  N88          000    000000A41A                        
+          003140*80*0003PUSTYNKA                      59410695000N030541468000E       UR11
+          003150*86*0003    00000K  N88          000     00000A41A                        
+          003160*80*0004BUGRY                         59403972000N030374036000E       UR11
+
+1                                                    NATIONAL GEODETIC SURVEY
+ PROGRAM ADJUST                                         ADJUSTMENT PROGRAM                                               PAGE   5
+                                                          VERSION   6.4.3
+
+
+          003170*86*0004    00000K  N88          000     00000A41A                        
+          003020*80*0005SABLINO                       59354020000N030465235000E       UR11
+          003030*86*0005    00000K  N88          000     00000A41A                        
+          003060*80*0006POGI                          59313929000N030350998000E       UR11
+          003070*86*0006    00000K  N88          000     00000A41A                        
+          003180*AA*                                                                      
+ ******** END OF BLUE BOOK ********
+
+ MINUTES TO READ BBOOK, GFILE, AND DFILE    0.0
+
+ MINUTES TO REORDER    0.0
+
+ THE NUMBER OF NON-TRIVIAL COMPONENTS IS  1.
+
+1                                                    NATIONAL GEODETIC SURVEY
+ PROGRAM ADJUST                                         ADJUSTMENT PROGRAM                                               PAGE   6
+                                                          VERSION   6.4.3
+
+
+0*** OBSERVATIONAL SUMMARY ***
+
+   SSN  CMP  STATION NAME                     DIR         ANG         AZI         DIS         ZD          GPS       DOP
+                                            FRM   TO    FRM   TO    FRM   TO    FRM   TO    FRM   TO    FRM   TO
+
+     1C   1  PULKOVO                          0    0      2    4      0    0      0    0      0    0      0    0      0
+     2    1  KABOSI                           0    0      3    6      0    0      0    0      0    0      0    0      0
+     3    1  PUSTYNKA                         0    0      4    8      0    0      0    0      0    0      0    0      0
+     4    1  BUGRY                            0    0      5   10      1    0      0    1      0    0      0    0      0
+     5    1  SABLINO                          0    0      2    4      0    1      1    0      0    0      0    0      0
+     6    1  POGI                             0    0      3    6      0    0      0    0      0    0      0    0      0
+
+ TOTAL MINUTES TO COMMENCMENT OF ADJUSTMENT    0.0
+
+1                                                    NATIONAL GEODETIC SURVEY
+ PROGRAM ADJUST                                         ADJUSTMENT PROGRAM                                               PAGE   7
+                                                          VERSION   6.4.3
+
+
+0*********** COMMENCING ADJUSTMENT ***********
+
+ THE AVERAGE BAND WIDTH FOR THE 2 DIM. ADJUSTMENT OF     6 STATIONS AND RANK     18 IS 143.1%.   D.P. WORDS NEEDED=      109
+0ITERATION # 0 THE RMS CORRECTION IS      0.068 METERS --- VTPV=          0.509  DF=    11  VARIANCE=           0.05
+0 MAXIMUM SHIFT - STATION: POGI                                    LATITUDE SHIFT=      0.179 METERS
+
+ MINUTES NEEDED FOR ITERATION  0 =    0.0
+0ITERATION # 1 THE RMS CORRECTION IS      0.000 METERS --- VTPV=          0.509  DF=    11  VARIANCE=           0.05
+0 MAXIMUM SHIFT - STATION: PUSTYNKA                                LATITUDE SHIFT=      0.000 METERS
+
+ MINUTES NEEDED FOR ITERATION  1 =    0.0
+0*********** ADJUSTMENT CONVERGED *************
+0NUM    VAR. FACTOR    DEG. OF FREE.       V.F. RATIO(COMP/INIT)
+
+     1         0.046        11.000                     0.046
+
+ MINUTES NEEDED FOR ITERATION  1 =    0.0
+0ITERATION # 2 THE RMS CORRECTION IS      0.000 METERS --- VTPV=         11.000  DF=    11  VARIANCE=           1.00
+0 MAXIMUM SHIFT - STATION: PUSTYNKA                                LATITUDE SHIFT=      0.000 METERS
+0NUM    VAR. FACTOR    DEG. OF FREE.       V.F. RATIO(COMP/INIT)
+
+     1         0.046        11.000                     0.046
+
+ MINUTES NEEDED FOR ITERATION  2 =    0.0
+0***** VARIANCE FACTOR ADJUSTMENT CONVERGED *******
+
+1                                                    NATIONAL GEODETIC SURVEY
+ PROGRAM ADJUST                                         ADJUSTMENT PROGRAM                                               PAGE   8
+                                                          VERSION   6.4.3
+
+
+0*** JOB STATISTICS ***
+
+0A.) BLUE-BOOK STATISTICS
+         NO. *80* CONTROL RECORDS         6
+         NO. *85* DEFLECTION RECORDS      0
+         NO. *86* ELEVATION RECORDS       6
+         NO. DIRECTIONS                   0
+         NO. ANGLES                      19
+         NO. GPS VECTORS                  0
+         NO. DOPPLER OBS.                 0
+         NO. ZENITH DISTANCES             0
+         NO. DISTANCES                    1
+         NO. AZIMUTHS                     1
+ B.) NO. CONSTRAINTS                      9
+ C.) NO. ACCURACIES                       0
+ D.) NO. REJECTED OBS.                    0
+
+1                                                    NATIONAL GEODETIC SURVEY
+ PROGRAM ADJUST                                         ADJUSTMENT PROGRAM                                               PAGE   9
+                                                          VERSION   6.4.3
+
+
+0NORMALIZED RESIDUALS
+                 COMPUTED        OBSERVED         V=C-O             SDV     V/SDV     MDE      RN  FROM STATION
+                                                SEC     METER                       3-SIGMA        TO STATION(S)
+                                                                                                   SESSION ID
+      1 EH         0.000            0.000               0.000    0.00    0.00    0.0000  0.00     (    1) PULKOVO                       
+ 
+      2 EH         0.000            0.000               0.000    0.00    0.00    0.0000  0.00     (    2) KABOSI                        
+ 
+      3 EH         0.000            0.000               0.000    0.00    0.00    0.0000  0.00     (    3) PUSTYNKA                      
+ 
+      4 EH         0.000            0.000               0.000    0.00    0.00    0.0000  0.00     (    4) BUGRY                         
+ 
+      5 EH         0.000            0.000               0.000    0.00    0.00    0.0000  0.00     (    5) SABLINO                       
+ 
+      6 EH         0.000            0.000               0.000    0.00    0.00    0.0000  0.00     (    6) POGI                          
+ 
+                                                                                                  (    4) BUGRY                         
+      7 CA 136 54 49.95N    136 54 49.95N     0.00               0.00    0.00    0.00    0.00     (    5) SABLINO                       
+ 
+      8 LA  59 46 15.34900N  59 46 15.34900N  0.00000   0.000    0.00    0.00    0.0000  0.00     (    1) PULKOVO                       
+      9 LO 329 40 35.22150W 329 40 35.22150W  0.00000   0.000    0.00    0.00    0.0000  0.00     (    1) PULKOVO                       
+ 
+                                                                                                  (    3) PUSTYNKA                      
+     10 HA  11 16 48.46      11 16 49.10     -0.64               0.90   -0.71    3.85    0.70     (    5) SABLINO                       
+                                                                                                  (    6) POGI                          
+     11 HA  41 15 34.11      41 15 33.10      1.01               0.84    1.21    4.13    0.61     (    6) POGI                          
+                                                                                                  (    4) BUGRY                         
+     12 HA  10  2 41.91      10  2 42.70     -0.79               0.95   -0.83    3.65    0.78     (    4) BUGRY                         
+                                                                                                  (    2) KABOSI                        
+     13 HA   9 28 33.50       9 28 32.60      0.90               0.98    0.92    3.54    0.83     (    2) KABOSI                        
+                                                                                                  (    1) PULKOVO                       
+ 
+                                                                                                  (    5) SABLINO                       
+     14 HA  81  0 58.21      81  0 59.10     -0.89               0.70   -1.27    4.94    0.43     (    6) POGI                          
+                                                                                                  (    4) BUGRY                         
+     15 HA  77 19 40.04      77 19 38.70      1.34               0.69    1.94    5.01    0.41     (    4) BUGRY                         
+                                                                                                  (    3) PUSTYNKA                      
+ 
+                                                                                                  (    6) POGI                          
+     16 HA  45 42 56.97      45 42 57.10     -0.13               0.70   -0.18    4.93    0.43     (    2) KABOSI                        
+                                                                                                  (    4) BUGRY                         
+     17 HA  37 28 33.07      37 28 34.70     -1.63               0.83   -1.96    4.17    0.60     (    4) BUGRY                         
+                                                                                                  (    3) PUSTYNKA                      
+     18 HA  10 22 33.44      10 22 32.20      1.24               0.92    1.35    3.76    0.73     (    3) PUSTYNKA                      
+                                                                                                  (    5) SABLINO                       
+ 
+                                                                                                  (    4) BUGRY                         
+     19 HA  50  7 57.77      50  7 56.80      0.97               0.75    1.29    4.64    0.48     (    3) PUSTYNKA                      
+                                                                                                  (    5) SABLINO                       
+
+1                                                    NATIONAL GEODETIC SURVEY
+ PROGRAM ADJUST                                         ADJUSTMENT PROGRAM                                               PAGE  10
+                                                          VERSION   6.4.3
+
+
+0NORMALIZED RESIDUALS
+                 COMPUTED        OBSERVED         V=C-O             SDV     V/SDV     MDE      RN  FROM STATION
+                                                SEC     METER                       3-SIGMA        TO STATION(S)
+                                                                                                   SESSION ID
+     20 HA  51  7 55.70      51  7 56.20     -0.50               0.74   -0.67    4.68    0.47     (    5) SABLINO                       
+                                                                                                  (    6) POGI                          
+     21 HA  96 39 58.95      96 39 58.40      0.55               0.77    0.72    4.54    0.51     (    6) POGI                          
+                                                                                                  (    2) KABOSI                        
+     22 HA  16 39 35.53      16 39 35.80     -0.27               0.79   -0.35    4.39    0.54     (    2) KABOSI                        
+                                                                                                  (    1) PULKOVO                       
+     23 HA 145 24 32.06     145 24 32.60     -0.54               0.76   -0.72    4.57    0.50     (    1) PULKOVO                       
+                                                                                                  (    3) PUSTYNKA                      
+ 
+                                                                                                  (    2) KABOSI                        
+     24 HA  75 55 12.98      75 55 12.40      0.58               0.69    0.83    5.01    0.41     (    1) PULKOVO                       
+                                                                                                  (    3) PUSTYNKA                      
+     25 HA   7 53 10.75       7 53 11.20     -0.45               1.01   -0.45    3.45    0.88     (    3) PUSTYNKA                      
+                                                                                                  (    4) BUGRY                         
+     26 HA  37 37  4.92      37 37  4.70      0.22               0.69    0.31    5.01    0.42     (    4) BUGRY                         
+                                                                                                  (    6) POGI                          
+ 
+                                                                                                  (    1) PULKOVO                       
+     27 HA  15  4 12.98      15  4 13.40     -0.42               0.99   -0.43    3.51    0.85     (    3) PUSTYNKA                      
+                                                                                                  (    4) BUGRY                         
+     28 HA  79 32  1.04      79 32  0.40      0.64               0.69    0.92    5.01    0.41     (    4) BUGRY                         
+                                                                                                  (    2) KABOSI                        
+ 
+                                                                                                  (    5) SABLINO                       
+     29 DIST   12676.3820       12676.3820              0.000    0.00    0.00    0.0000  0.00     (    4) BUGRY                         
+
+1                                                    NATIONAL GEODETIC SURVEY
+ PROGRAM ADJUST                                         ADJUSTMENT PROGRAM                                               PAGE  11
+                                                          VERSION   6.4.3
+
+
+0RESIDUAL STATISTICS
+
+ OBSERVATION NUMBERS OF 20 GREATEST RESIDUALS (V)
+
+     17    15    18    11    19    13    14    12    10    28    24    21    23    20    25    27    22    26    16     7
+
+ OBSERVATION NUMBERS OF 19 GREATEST STANDARDIZED RESIDUALS (V/SDV)
+
+     17    15    18    19    14    11    13    28    24    12    21    23    10    20    25    27    22    26    16
+  TOTAL=    29        NO-CHECK=   10
+  MAX V=  1.3D+00    MAX V/SDV=    1.940
+  MIN V= -1.6D+00    MIN V/SDV=   -1.960
+ MEAN V=  4.1D-02   MEAN V/SDV=    0.038
+
+               N      VTPV      RMS       RN        VTPV/RN      MEAN ABS
+                               VTPV                              RESIDUAL
+ DELTA X       0       0.0     0.00     0.00           0.00      0.000 (METERS)
+ DELTA Y       0       0.0     0.00     0.00           0.00      0.000 (METERS)
+ DELTA Z       0       0.0     0.00     0.00           0.00      0.000 (METERS)
+ DOPPLER X     0       0.0     0.00     0.00           0.00      0.000 (METERS)
+ DOPPLER Y     0       0.0     0.00     0.00           0.00      0.000 (METERS)
+ DOPPLER Z     0       0.0     0.00     0.00           0.00      0.000 (METERS)
+ DIRECTION     0       0.0     0.00     0.00           0.00      0.000 (SECONDS)
+ H ANGLE      19      11.0     0.76    11.00           1.00      0.722 (SECONDS)
+ ZEN DIST      0       0.0     0.00     0.00           0.00      0.000 (SECONDS)
+ DISTANCE      1       0.0     0.00     0.00           0.00      0.000 (METERS)
+ AZIMUTH       0       0.0     0.00     0.00           0.00      0.000 (SECONDS)
+ OTHER         9       0.0     0.00     0.00           0.00      0.000
+ TOTAL        29      11.0     0.62    11.00           1.00
+
+0DEGREES OF FREEDOM      =               11
+ VARIANCE SUM            =               11.0
+ STD.DEV.OF UNIT WEIGHT  =                1.000
+ VARIANCE OF UNIT WEIGHT =                1.00
+
+ MINUTES TO LIST RESIDUALS    0.0
+
+1                                                    NATIONAL GEODETIC SURVEY
+ PROGRAM ADJUST                                         ADJUSTMENT PROGRAM                                               PAGE  12
+                                                          VERSION   6.4.3
+
+
+0ADJUSTED POSITIONS
+
+        SSN NAME                             LATITUDE         LONGITUDE      ORTHO. HT.   G. HT.    E. HT.
+0    1    1 PULKOVO                        59 46 15.34900N  329 40 35.22150W     0.000    0.000     0.000 
+                                SHIFTS (M.)       0.031S            0.023W                         0.000 AZ=218 H=  0.039 T=  0.039
+                       UNSCALED SIGMAS (M.)       0.001             0.001                          0.001
+                                GOOGES            1.0D+00           1.0D+00                        1.0D+00
+                X =    2778415.2510          Y =    1625107.0793          Z =    5487105.4043
+0    2    2 KABOSI                         59 43 20.69859N  329 42 45.48575W     0.000    0.000     0.000 
+                                SHIFTS (M.)       0.044S            0.090W                         0.000 AZ=245 H=  0.100 T=  0.100
+                       UNSCALED SIGMAS (M.)       0.078             0.046                          0.001
+                                GOOGES            6.4D-01           2.3D-01                        1.0D+00
+                X =    2783472.0270          Y =    1625706.4189          Z =    5484382.6345
+0    3    3 PUSTYNKA                       59 41  6.94936N  329  5 45.31529W     0.000    0.000     0.000 
+                                SHIFTS (M.)       0.020S            0.074E                         0.000 AZ=105 H=  0.076 T=  0.076
+                       UNSCALED SIGMAS (M.)       0.167             0.177                          0.001
+                                GOOGES            1.6D-01           1.3D-01                        1.0D+00
+                X =    2768878.5738          Y =    1657407.3863          Z =    5482294.8488
+0    4    4 BUGRY                          59 40 39.72194N  329 22 19.63759W     0.000    0.000     0.000 
+                                SHIFTS (M.)       0.060N            0.038E                         0.000 AZ= 33 H=  0.071 T=  0.071
+                       UNSCALED SIGMAS (M.)       0.134             0.156                          0.001
+                                GOOGES            2.3D-05           8.4D-06                        1.0D+00
+                X =    2777461.8934          Y =    1644411.0075          Z =    5481869.5544
+0    5    5 SABLINO                        59 35 40.20116N  329 13  7.65125W     0.000    0.000     0.000 
+                                SHIFTS (M.)       0.036N            0.020W                         0.000 AZ=332 H=  0.041 T=  0.041
+                       UNSCALED SIGMAS (M.)       0.134             0.156                          0.001
+                                GOOGES            1.0D+00           1.0D-01                        1.0D+00
+                X =    2779921.4844          Y =    1655930.2677          Z =    5477184.7153
+0    6    6 POGI                           59 31 39.28423N  329 24 50.01876W     0.000    0.000     0.000 
+                                SHIFTS (M.)       0.179S            0.020E                         0.000 AZ=174 H=  0.180 T=  0.180
+                       UNSCALED SIGMAS (M.)       0.178             0.162                          0.001
+                                GOOGES            1.0D+00           7.5D-01                        1.0D+00
+                X =    2791076.8896          Y =    1649724.8496          Z =    5473408.1259
+
+ MINUTES TO LIST ADJUSTED POSITIONS    0.0
+
+
+
+
+COMPARISON OF ADJUSTED AND CONSTRAINED COORDINATES AND HEIGHTS
+ADJUSTED MINUS CONSTRAINED COORDINATE SHIFTS (METERS)
+CURRENTLY NO VALUES ARE PRINTED FOR VERTICAL CONSTRAINTS
+
+ ISN   SSN          STATION DESIGNATION                  DELTA NORTH    DELTA EAST   DELTA HORIZ   DELTA UP
+   1     1        PULKOVO                                   -0.0000       0.0000       0.0000       0.0000
+0END OF ADJUST PROCESSING
+ SYSTEM TIME IS 21/JAN/24 11:31:21.57   
+ HAVE A NICE DAY!
