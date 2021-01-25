@@ -100,7 +100,8 @@
       CHARACTER*99 SCCSID
       CHARACTER*5  PGMVER
       CHARACTER*15 PGMDAT
-      CHARACTER*80 BBOOK, AFILE, GFILE, DFILE, FILE, ADJOUT, BBNAM
+      CHARACTER*80 CFILE, BBOOK, AFILE, GFILE, DFILE
+      CHARACTER*80 FILE, ADJOUT, BBNAM
       CHARACTER*26 TBUF
       CHARACTER*7  ADJFIL, NAFILE
       CHARACTER*1 RESP  
@@ -116,6 +117,7 @@
 *** STORAGE -- NECESSARY IN SOME MACHINES
 
       COMMON /BLOCK/ A
+      INTEGER IUC, IOS
 
       LNWORK = LENIW
       LAWORK = LENA
@@ -137,20 +139,17 @@
       AFILE = 'AFILE'
       GFILE = 'GFILE'
       DFILE = 'DFILE'
+      ADJOUT = 'LOG'
+      BBNAM = 'OUTPOS'
 
 *** use with all compilers
       WRITE (*,2) PGMVER,PGMDAT
-   2  FORMAT(' WELCOME TO ADJUST VERSION ',A5,
-     *       '   DATE(ccyy/mm/dd) ',A15,/)
-
-      WRITE (*,10)
+   2  FORMAT (' WELCOME TO ADJUST VERSION ',A5,
+     *        '   DATE(ccyy/mm/dd) ',A15,/)
+   7  FORMAT (' CONFIG FILE: ',A80,/)
    10 FORMAT (' ENTER INPUT BLUE BOOK FILENAME (DEFAULT=''BBOOK''):',/)
-      READ (*,20,END=99,ERR=99) FILE
    20 FORMAT (A80)
-      IF (FILE .NE. ' ') BBOOK = FILE
-      WRITE (*,20) BBOOK
-
-      WRITE (*,30)
+   
 ***v 4.28k
 ***   30 FORMAT (' ENTER ADJUSTMENT FILE FILENAME', /,
 ***     *        ' (DEFAULT=''AFILE'', IF THERE ISNT ONE,',
@@ -158,42 +157,85 @@
    30 FORMAT (' ENTER ADJUSTMENT FILE FILENAME',
      *        ' (DEFAULT=''AFILE''):'/) 
 ******************************************     
+   40 FORMAT (' ENTER GPS FILE FILENAME (DEFAULT=''GFILE''):',/)
+   
+c  50 FORMAT (' ENTER DOPPLER FILE FILENAME', /,
+c    *        ' (DEFAULT=''DFILE'', IF THERE ISNT ONE,',
+c    *        ' ENTER: ''NODFILE''):', /)
      
-      READ (*,20,END=99,ERR=99) FILE
-      IF (FILE .NE. ' ') AFILE = FILE
-      WRITE (*,20) AFILE
-
-      WRITE (*,40)
-   40 FORMAT(' ENTER GPS FILE FILENAME (DEFAULT=''GFILE''):',/)
-      READ (*,20,END=99,ERR=99) FILE
-      IF (FILE .NE. ' ') GFILE = FILE
-      WRITE (*,20) GFILE
-
-c     WRITE (*,50)
-   50 FORMAT (' ENTER DOPPLER FILE FILENAME', /,
-     *        ' (DEFAULT=''DFILE'', IF THERE ISNT ONE,',
-     *        ' ENTER: ''NODFILE''):', /)
-c     READ (*,20,END=99,ERR=99) FILE
-      FILE = 'NODFILE'
-      IF (FILE .NE. ' ') DFILE = FILE
-c     WRITE (*,20) DFILE
-
-      WRITE (*,55)
    55 FORMAT (' ENTER THE DESIRED NAME FOR THE PRINTED OUTPUT : '/,
      *        ' (Make sure it is not an existing filename.)')
      
-      READ(*,20) ADJOUT
-      WRITE (*,20) ADJOUT
-      
-**v 4.28
-
-      WRITE (*,56)
    56 FORMAT (' ENTER THE DESIRED NAME FOR THE OUTPUT BLUE BOOK',
      *        ' FILENAME : '/,
      *        ' (Make sure it is not an existing filename.)')
      
-      READ(*,20) BBNAM
-      WRITE (*,20) BBNAM
+      IUC = 8
+      I = COMMAND_ARGUMENT_COUNT()
+      IF(I.GT.0) THEN
+        CALL GET_COMMAND_ARGUMENT(1, CFILE)
+        WRITE (*,7) CFILE
+        OPEN (IUC,FILE=CFILE,STATUS='OLD',ACTION='READ',IOSTAT=IOS)
+        IF(IOS .NE. 0) THEN
+          WRITE(6,*) 'ERROR OPENING CONFIG FILE!'
+          STOP
+        ENDIF
+        WRITE (*,10)
+        READ (IUC,20,END=99,ERR=99) FILE
+        IF (FILE .NE. ' ') BBOOK = FILE
+        WRITE (*,20) BBOOK
+        WRITE (*,30)
+        READ (IUC,20,END=99,ERR=99) FILE
+        IF (FILE .NE. ' ') AFILE = FILE
+        WRITE (*,20) AFILE
+        WRITE (*,40)
+        READ (IUC,20,END=99,ERR=99) FILE
+        IF (FILE .NE. ' ') GFILE = FILE
+        WRITE (*,20) GFILE
+        FILE = 'NODFILE'
+        IF (FILE .NE. ' ') DFILE = FILE
+        WRITE (*,55)
+        READ (IUC,20,END=99,ERR=99) FILE
+        IF (FILE .NE. ' ') ADJOUT = FILE
+        WRITE (*,20) ADJOUT
+        WRITE (*,56)
+        READ (IUC,20,END=99,ERR=99) FILE
+        IF (FILE .NE. ' ') BBNAM = FILE
+        WRITE (*,20) BBNAM
+        CLOSE (IUC)
+      ELSE
+        WRITE (*,10)
+        READ (*,20,END=99,ERR=99) FILE
+        IF (FILE .NE. ' ') BBOOK = FILE
+        WRITE (*,20) BBOOK
+
+        WRITE (*,30)
+        READ (*,20,END=99,ERR=99) FILE
+        IF (FILE .NE. ' ') AFILE = FILE
+        WRITE (*,20) AFILE
+
+        WRITE (*,40)
+        READ (*,20,END=99,ERR=99) FILE
+        IF (FILE .NE. ' ') GFILE = FILE
+        WRITE (*,20) GFILE
+
+c       WRITE (*,50)
+c       READ (*,20,END=99,ERR=99) FILE
+        FILE = 'NODFILE'
+        IF (FILE .NE. ' ') DFILE = FILE
+c       WRITE (*,20) DFILE
+
+        WRITE (*,55)
+        READ (*,20,END=99,ERR=99) FILE
+        IF (FILE .NE. ' ') ADJOUT = FILE
+        WRITE (*,20) ADJOUT
+      
+**v 4.28
+        WRITE (*,56)
+        READ (*,20,END=99,ERR=99) FILE
+        IF (FILE .NE. ' ') BBNAM = FILE
+        WRITE (*,20) BBNAM
+      ENDIF
 
    99 CONTINUE
       CLOSE (UNIT=6)
