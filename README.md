@@ -8,4 +8,6 @@ The Adjust & Utilities program suite for GPS projects has been released to produ
 
 ### LINKS
 
-https://geodesy.noaa.gov/PC_PROD/ADJUST/
+* https://geodesy.noaa.gov/PC_PROD/ADJUST/
+* https://github.com/Geo-Linux-Calculations/ngs_blue_book
+
