@@ -1,3 +1,9 @@
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/Geo-Linux-Calculations/adjust)
+![GitHub Release Date](https://img.shields.io/github/release-date/Geo-Linux-Calculations/adjust)
+![GitHub repo size](https://img.shields.io/github/repo-size/Geo-Linux-Calculations/adjust)
+![GitHub all releases](https://img.shields.io/github/downloads/Geo-Linux-Calculations/adjust/total)
+![GitHub](https://img.shields.io/github/license/Geo-Linux-Calculations/adjust)
+
 # ADJUST
 
 ### DESCRIPTION
